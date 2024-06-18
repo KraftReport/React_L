@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useParams, useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";

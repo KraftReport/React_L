@@ -83,20 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "e1eb",
-      "title": "Junior Software Engineer (React Native)",
-      "type": "Full-Time",
-      "location": "Yangon, MICT Park",
-      "description": "develop and maintain mobile apps",
-      "salary": "Under $50K",
-      "company": {
-        "name": "ACE Data Systems Ltd",
-        "description": "IT solution provider",
-        "contactEmail": "ace@gmail.com",
-        "contactPhone": "99-999-999-999"
-      }
     }
   ]
 }

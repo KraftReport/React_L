@@ -9,13 +9,21 @@ class Item extends React.Component{
 }
 
 class App extends React.Component{
+
+  state ={ items : [
+    {name : "book",price : 20},
+    {name : "phone",price : 30}
+  ]}
   render(){
     return (
       <div>
         <h1>Hello React</h1>
         <ul>
-          <Item name="apple" price="399" />
-          <Item name="banana" price="202" />
+          {this.state.items.map(i=>{
+              return (
+                <Item name={i.name} price={i.price} />
+              )
+          })} 
         </ul>
       </div>
     )

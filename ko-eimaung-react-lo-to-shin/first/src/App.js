@@ -8,12 +8,44 @@ class Item extends React.Component{
   }
 }
 
+class AppForm extends React.Component{
+  nameRef = React.createRef()
+  priceRef = React.createRef()
+  
+  add = () =>{
+    this.props.add(this.nameRef.current.value,this.priceRef.current.value)
+  }
+
+  render(){
+    return(
+      <>
+      <input type='text' ref={this.nameRef}/>    
+      <input type='text' ref={this.priceRef}/>   
+      <button onClick={this.add}>Add Item</button>
+      </>
+    )
+  }
+}
+
 class App extends React.Component{
 
   state ={ items : [
-    {name : "book",price : 20},
-    {name : "phone",price : 30}
+    {id:1,name : "book",price : 20},
+    {id:2,name : "phone",price : 30}
   ]}
+
+
+
+  nameRef = React.createRef()
+  priceRef = React.createRef()
+
+  add = (name,price) =>{
+    let id = this.state.items.length + 1 
+      this.setState({items:
+        [...this.state.items,{id:id,name : name,price :price}]
+      })
+  }
+
   render(){
     return (
       <div>
@@ -21,10 +53,11 @@ class App extends React.Component{
         <ul>
           {this.state.items.map(i=>{
               return (
-                <Item name={i.name} price={i.price} />
+                <Item key={i.id} name={i.name} price={i.price} />
               )
           })} 
         </ul>
+        <AppForm add={this.add}/>
       </div>
     )
   }

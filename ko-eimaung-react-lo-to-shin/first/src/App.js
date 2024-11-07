@@ -1,12 +1,7 @@
-import React from 'react'
-
-class Item extends React.Component{
-  render(){
-    return (<li>
-      {this.props.name} : {this.props.price} $
-    </li>)
-  }
-}
+import React,{useState,createRef} from 'react'
+import ToolBar from './ToolBar'
+import Item from './Item'
+ 
 
 class AppForm extends React.Component{
   nameRef = React.createRef()
@@ -27,40 +22,46 @@ class AppForm extends React.Component{
   }
 }
 
-class App extends React.Component{
+const App = props => {
 
-  state ={ items : [
-    {id:1,name : "book",price : 20},
-    {id:2,name : "phone",price : 30}
-  ]}
+  let [item,setItem] = useState([
+    {id:1,name :"item 1",price : 100},
+    {id:2,name:"item 2",price: 200}
+  ]) 
 
+  let nameRef = createRef()
+  let priceRef = createRef()
 
-
-  nameRef = React.createRef()
-  priceRef = React.createRef()
-
-  add = (name,price) =>{
-    let id = this.state.items.length + 1 
-      this.setState({items:
-        [...this.state.items,{id:id,name : name,price :price}]
-      })
+ const add = () =>{
+    let id =  item.length + 1
+    let name =  nameRef.current.value
+    let price = priceRef.current.value
+      setItem( 
+        [...item,{ id, name, price}]
+       )
   }
 
-  render(){
+  
+ 
     return (
       <div>
         <h1>Hello React</h1>
         <ul>
-          {this.state.items.map(i=>{
-              return (
-                <Item key={i.id} name={i.name} price={i.price} />
-              )
-          })} 
+          {
+            item.map(i=>(
+              <Item key={i.id} name={i.name} price={i.price}/>
+          ))
+          }
         </ul>
-        <AppForm add={this.add}/>
+          <input type='text' ref={nameRef} />
+          <input type='text' ref={priceRef} />
+          <button onClick={add}>Add</button>  
       </div>
     )
   }
-}
+
+ 
+
+ 
 
 export default App

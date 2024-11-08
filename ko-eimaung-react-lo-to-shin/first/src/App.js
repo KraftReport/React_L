@@ -3,6 +3,8 @@ import ToolBar from './ToolBar'
 import Item from './Item'
  
 
+let MyBox = React.createContext('my ball')
+
 class AppForm extends React.Component{
   nameRef = React.createRef()
   priceRef = React.createRef()
@@ -20,6 +22,12 @@ class AppForm extends React.Component{
       </>
     )
   }
+}
+
+const Ball = props =>{
+  return(
+    <div>{React.useContext(MyBox)}</div>
+  )
 }
 
 const App = props => {
@@ -41,10 +49,12 @@ const App = props => {
        )
   }
 
-  
+  MyBox = React.createContext('red ball')
  
     return (
       <div>
+      
+        <Ball />
         <h1>Hello React</h1>
         <ul>
           {

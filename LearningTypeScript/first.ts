@@ -1,5 +1,8 @@
 import * as deepEqual from "deep-equal";
+
+
 console.log(deepEqual({a:123},{a:123}));
+
 var foo : number = 122
 
 console.log()

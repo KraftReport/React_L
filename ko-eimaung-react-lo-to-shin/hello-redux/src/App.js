@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import { createRef } from 'react';
+import { createRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router ,Routes ,Route,Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const users  = [
   {id : 1, name : "kyaw kyaw", gender : 'male'},
@@ -42,7 +43,7 @@ const Item = ({name,price}) => {
   )
 }
 
-const App = props => {
+const App =   props => {
   let nameRef = createRef()
   let priceRef = createRef()
   const add =  () => {
@@ -53,8 +54,25 @@ const App = props => {
     )
   }
 
+  const [apiUsers,setApiUsers] = useState([])
+
+  useEffect(()=> {
+    fetch('https://reqres.in/api/users').then(a => a.json()).then(b => setApiUsers(b.data))
+  },[])
+
+  const addApiUsers = () => {
+    fetch('https://reqres.in/api/users',{
+      method : 'POST',
+      headers : {
+        'Content-Type' : 'application/json'
+      },
+      body :JSON.stringify( {'first_name':'Tom'})
+    }).then(a=>a.json()).then(b=>setApiUsers([...apiUsers,b]))
+  }
   return (
     <>
+    <div>{apiUsers.map(i=><b key={i.id}>{i.first_name}</b>)}</div>
+    <button onClick={addApiUsers}>add api users</button>
     <Router>
     <ul>
   <li><Link to="/user/alice">Alice</Link></li>

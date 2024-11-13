@@ -1,0 +1,10 @@
+
+ko-eimaung-react-lo-to-shin/next/.next/cache/.rscinfo
+*.cjs
+/ko-eimaung-react-lo-to-shin/next/node_modules
+/LearningTypeScript/node_modules
+/ko-eimaung-react-lo-to-shin/next/.next/static/webpack
+/ko-eimaung-react-lo-to-shin/next/.next/static/chunks/fallback
+/ko-eimaung-react-lo-to-shin/next/.next/server
+/ko-eimaung-react-lo-to-shin/next/.next/cache/webpack
+/ko-eimaung-react-lo-to-shin/next/.next

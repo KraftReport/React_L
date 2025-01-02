@@ -1,11 +1,24 @@
- 
+import React, { useState } from "react";
 import './App.css'
+import InputField from './components/InputField'
+import { Todo } from "./model";
 
-function App() { 
+const App : React.FC = () => { 
+
+  const [todo,setTodo] = useState<string>("")
+
+  const [todos, setTodos] = useState<Todo[]>([])
+
+  const handleAdd = () =>{
+
+  }
+
+  console.log(todo)
 
   return (
     <>
-      <div>Myo Set Paing</div>
+    <h1>ToDo List</h1>
+    <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
     </>
   )
 }

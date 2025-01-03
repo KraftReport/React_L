@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 
-type Props = {
+interface Props  {
     todo : string;
     setTodo : React.Dispatch<React.SetStateAction<string>>;
     handleAdd : (e:React.FormEvent)=>void

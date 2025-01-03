@@ -3,14 +3,20 @@ import { Todo } from "../model"
 
 interface Props {
     todos : Todo[],
-    setTodo : 
+    setTodos : React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const TodoList :React.FC = ()=> {
+const TodoList :React.FC<Props> = ({todos,setTodos})=> {
    
     return(
         <>
-        
+            <div className="todoList">
+                {
+                    todos.map(todo=>(
+                        <li>{todo.todo}</li>
+                    ))
+                }
+            </div>
         </>
     )
 }

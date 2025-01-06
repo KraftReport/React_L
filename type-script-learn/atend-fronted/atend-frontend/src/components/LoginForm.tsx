@@ -15,9 +15,9 @@ const LoginForm : React.FC  = () => {
 
             try {
             const response = await axios.post(
-                'http://localhost:8080/api/auth/verify',
-                {id},
-                {headers : {'Content-Type' : 'application/json'}}
+                'http://localhost:8080/api/auth/authenticate',
+                {'token':id},
+                {headers : {'Content-Type' : 'multipart/form-data'}}
             )
             console.log(response)
             } catch (error) {

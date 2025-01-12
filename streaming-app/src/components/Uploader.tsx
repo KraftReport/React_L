@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useVideoIdUploadContext } from "../Context"
 
 const Uploader : React.FC = () => {
@@ -22,11 +22,14 @@ const Uploader : React.FC = () => {
             {'title':title,'file':file},
             {headers : {'Content-Type' : 'multipart/form-data'}}
         ) 
-        uploadVideoId(response.data)
+        await uploadVideoId(response.data)
         console.log(response.data)
-        console.log(videoId)
+        console.log(videoId) 
     }
 
+    useEffect(()=>{
+        console.log(videoId)
+    },[videoId])
     return(
         <>
             <form onSubmit={handleSubmit}>

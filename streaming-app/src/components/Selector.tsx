@@ -10,7 +10,7 @@ const Selector :React.FC =  () => {
     const [playbackInfo,setPlaybackInfo] = useState<string>("")
     const [loading,setIsLoading] = useState<boolean>(true)
     const {videoId,uploadVideoId} = useVideoIdUploadContext()
-    uploadVideoId("fabef32dff8c42fb97f38b243490da03") 
+   // uploadVideoId("fabef32dff8c42fb97f38b243490da03") 
     useEffect(()=>{
         const fetchOtpAndPlaybackInfo = async () => {
             const response = await axios.post( "https://localhost:44370/api/stream/otp",

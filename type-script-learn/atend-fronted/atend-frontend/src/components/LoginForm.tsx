@@ -1,12 +1,12 @@
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import React from "react";  
+import { useTokenContext } from "../share/TokenContext";
 
 const LoginForm : React.FC  = () => {
 
-
-    
-
+    const {setToken} = useTokenContext()
+ 
     const handleSuccess = async (response: { credential?: string }) => {
         
         if(response.credential){
@@ -19,7 +19,8 @@ const LoginForm : React.FC  = () => {
                 {'token':id},
                 {headers : {'Content-Type' : 'multipart/form-data'}}
             )
-            console.log(response)
+            console.log("this is token-------->",response.data)
+            setToken(response.data)
             } catch (error) {
                 console.error(error)
             }
@@ -34,11 +35,9 @@ const LoginForm : React.FC  = () => {
     return(
         <>
         <div> 
-
         <GoogleLogin
             onSuccess={handleSuccess} onError={handleError} 
-            />   
-
+        />   
         </div>
      
         </>

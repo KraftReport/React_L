@@ -11,8 +11,7 @@ const LoginForm : React.FC  = () => {
     const {token,setToken} = useTokenContext()
 
     useEffect(()=>{
-        console.log("token is saved to context",token)
-        router.push("/dash")
+        console.log("token is saved to context",token) 
     },[token])
  
     const handleSuccess = async (response: { credential?: string }) => {
@@ -29,7 +28,7 @@ const LoginForm : React.FC  = () => {
             )
             console.log("this is token-------->",response.data)
             setToken(response.data)
-           
+            router.push("/dash")
             } catch (error) {
                 console.error(error)
             }
@@ -43,8 +42,7 @@ const LoginForm : React.FC  = () => {
 
     return(
         <>
-        <div> 
-            Login
+        <div>  
         <GoogleLogin
             onSuccess={handleSuccess} onError={handleError} 
         />   

@@ -10,9 +10,9 @@ const App: React.FC = () => {
 
     const clientId : string = '1069095628455-1uolcr1igmt45p9h0c4h61a7ksk7nkg7.apps.googleusercontent.com'
 
-    const handleLocationSelect =(lat:number,lng:number) => {
-      console.log(lat,lng)
-    }
+    // const handleLocationSelect =(lat:number,lng:number) => {
+    //   console.log(lat,lng)
+    // }
 
   return (
     <>
@@ -38,12 +38,12 @@ const App: React.FC = () => {
           <Route path="/list" component={UserList}/>
           <Route path="/dash" component={Dashboard} />
           <Route path="/map" >
-          <LeafletMap onLocationSelect={handleLocationSelect}/>
+          <LeafletMap  />
           </Route>
           <Route path="/" component={LoginComponent} />
         </Switch>
       </Router>
-      </GoogleOAuthProvider>
+      </GoogleOAuthProvider> 
     </>
   );
 };

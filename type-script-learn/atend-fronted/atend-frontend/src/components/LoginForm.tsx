@@ -32,8 +32,7 @@ const LoginForm : React.FC  = () => {
             } catch (error) {
                 console.error(error)
             }
-        } 
-        console.error('response is not contain tokenId') 
+        }  
     }
 
     const handleError = () => {

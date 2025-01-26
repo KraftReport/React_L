@@ -2,11 +2,32 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaf
 import 'leaflet/dist/leaflet.css'; 
 import React, { useState, useEffect } from 'react';
 import { LocationEvent } from 'leaflet';
+import axios from 'axios';
+import { useTokenContext } from '../share/TokenContext';
+import { useHistory } from 'react-router';
 
 const LeafletMap: React.FC = () => {
   const [position, setPosition] = useState<[number, number] | null>(null);
+  const {token,setToken} = useTokenContext()
+  const router = useHistory()
  
   const checkIn = async () : Promise<void> =>{
+    
+    if (position === null) {
+      console.error('Position is null. Unable to check in.');
+      return;
+    }
+  
+
+    const response =await axios.post('http://localhost:8080/api/check-in',
+      {'latitude':position[0] ,'longitude' : position[1]},
+      
+      {headers : {'Content-Type' : 'multipart/form-data' , Authorization : token} }
+    )
+ 
+    if(response){
+      router.push("/dash")
+    }
 
   }
 
@@ -29,7 +50,7 @@ const LeafletMap: React.FC = () => {
     <div>
       {position ? (
         <div>
-          <button onClick={}>Check in</button>
+          <button onClick={checkIn}>Check in</button>
         <MapContainer center={position} zoom={13} scrollWheelZoom={true} style={{ height: "500px", width: "100%" }}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -1,9 +1,10 @@
 import React from "react";
+import '../style/UserList.css'
 
 const UserList : React.FC = () => {
     return (
         <>
-        <div>user list</div>
+        <div className="userListContainer">user list</div>
         </>
     )
 }

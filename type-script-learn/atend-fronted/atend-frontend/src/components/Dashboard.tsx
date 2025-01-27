@@ -1,8 +1,9 @@
 import React from "react";
+import '../style/Dashboard.css'
 
 const Dashboard: React.FC = () => {
     return (
-        <div>This is the dashboard</div>
+        <div className="DashboardTitle">Record Your Current Location : - D</div>
     );
 }
 

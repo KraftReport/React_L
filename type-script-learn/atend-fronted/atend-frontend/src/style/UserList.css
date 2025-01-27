@@ -1,0 +1,12 @@
+.userListContainer{
+    width: 400px;
+    height: 600px; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    background-color: darkcyan;
+    border-radius: 20px;
+}

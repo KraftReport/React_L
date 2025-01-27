@@ -51,7 +51,7 @@ const LeafletMap: React.FC = () => {
       {position ? (
         <div>
           <button onClick={checkIn}>Check in</button>
-        <MapContainer center={position} zoom={13} scrollWheelZoom={true} style={{ height: "500px", width: "100%" }}>
+        <MapContainer className='leafLetMapContainer' center={position} zoom={13} scrollWheelZoom={true} style={{ height: "500px", width: "100%" }}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
